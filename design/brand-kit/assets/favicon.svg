@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="fav-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A192F"/>
+      <stop offset="100%" stop-color="#030A14"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#fav-bg)"/>
+  <g transform="translate(15, 12.5)">
+    <g stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+      <path d="M32.53 10 16.676.826"/>
+      <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+      <path d="M16.676.827.827 10"/>
+      <path d="M.827 9.999v18.353"/>
+      <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+      <path d="m.827 28.352 15.849 9.176"/>
+      <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+    </g>
+    <g stroke="#0A84FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+      <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+      <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+    </g>
+  </g>
+</svg>

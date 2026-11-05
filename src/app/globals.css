@@ -1,0 +1,162 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-sans);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-chassis: var(--brand-chassis);
+  --color-brand-ridge: var(--brand-ridge);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --animate-logo-spin-wave: logo-spin-wave 3.5s ease-in-out infinite;
+  --animate-pulse-subtle: pulse-subtle 2.5s ease-in-out infinite;
+  --animate-shimmer: progress-shimmer 2s linear infinite;
+}
+
+/* Signature 5-phase rotation wave from Lingoberg branding.html & dmatexam */
+@keyframes logo-spin-wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(90deg);
+  }
+  40% {
+    transform: rotate(360deg);
+  }
+  60% {
+    transform: rotate(450deg);
+  }
+  85% {
+    transform: rotate(720deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%,
+  100% {
+    opacity: 0.85;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes progress-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+/* Light Mode — Lingoberg Option B Palette (Default) */
+:root {
+  --background: #f8fafc;
+  --foreground: #0a192f;
+  --card: #ffffff;
+  --card-foreground: #0a192f;
+  --popover: #ffffff;
+  --popover-foreground: #0a192f;
+  --primary: #0284c7;
+  --primary-foreground: #ffffff;
+  --secondary: #475569;
+  --secondary-foreground: #ffffff;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #0a192f;
+  --destructive: #ef4444;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #0284c7;
+  --radius: 0.625rem;
+  --brand-navy: #0a192f;
+  --brand-chassis: #0a192f;
+  --brand-ridge: #0284c7;
+}
+
+/* Dark Mode — Lingoberg Option 5 Palette */
+.dark {
+  --background: #0b0f17;
+  --foreground: #f0f6fc;
+  --card: #161b22;
+  --card-foreground: #f0f6fc;
+  --popover: #161b22;
+  --popover-foreground: #f0f6fc;
+  --primary: #0a84ff;
+  --primary-foreground: #ffffff;
+  --secondary: #94a3b8;
+  --secondary-foreground: #0b0f17;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #21262d;
+  --accent-foreground: #f0f6fc;
+  --destructive: #f87171;
+  --border: #30363d;
+  --input: #30363d;
+  --ring: #0a84ff;
+  --brand-navy: #0a192f;
+  --brand-chassis: #cbd5e1;
+  --brand-ridge: #0a84ff;
+}
+
+/* Architectural Rule: Live exam sessions in Phase 2 must always render in Light Mode */
+.exam-light-enforced {
+  --background: #f8fafc;
+  --foreground: #0a192f;
+  --card: #ffffff;
+  --card-foreground: #0a192f;
+  --primary: #0284c7;
+  --primary-foreground: #ffffff;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --border: #e2e8f0;
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased transition-colors duration-300;
+  }
+  html {
+    @apply scroll-smooth font-sans;
+  }
+}

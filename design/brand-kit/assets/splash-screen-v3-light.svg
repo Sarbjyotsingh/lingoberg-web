@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1284 2778" width="1284" height="2778" fill="none">
+  <rect width="1284" height="2778" fill="#FFFFFF"/>
+  
+  <g transform="translate(194.0, 1242.6) scale(2.8)">
+    <text x="6" y="57" font-family="Plus Jakarta Sans, system-ui, -apple-system, sans-serif" font-size="64" font-weight="600" letter-spacing="0.01em" fill="#0A192F">Ling</text>
+    <g transform="translate(134, 10) scale(1.25)">
+      <g stroke="#0A192F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+      <g stroke="#0284C7" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+    </g>
+    <text x="180" y="57" font-family="Plus Jakarta Sans, system-ui, -apple-system, sans-serif" font-size="64" font-weight="600" letter-spacing="0.01em" fill="#0284C7">berg</text>
+  </g>
+</svg>

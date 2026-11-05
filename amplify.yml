@@ -1,0 +1,24 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        # Install Bun runtime
+        - curl -fsSL https://bun.sh/install | bash
+        - export BUN_INSTALL="$HOME/.bun"
+        - export PATH="$BUN_INSTALL/bin:$PATH"
+        # Enable SSR/Subdomain mode on AWS Amplify (Phase 2)
+        - echo "NEXT_BUILD_TARGET=amplify" >> .env.production
+        - env | grep -E 'FIREBASE_|RAZORPAY_|STRIPE_|REVENUECAT_|NEXT_PUBLIC_' >> .env.production || true
+        - bun install
+    build:
+      commands:
+        - bun run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - .bun/**/*
+      - node_modules/**/*

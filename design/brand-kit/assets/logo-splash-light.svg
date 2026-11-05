@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152 106" fill="none" style="overflow: visible;">
+  <!-- Line 1: Centered Logo Mark -->
+  <g transform="translate(51, 5.5) scale(1.5)">
+    <g stroke="#0A192F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+    <g stroke="#0284C7" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+  </g>
+  <!-- Line 2: Centered Lingoberg Text (Improved letter-spacing 0.03em) -->
+  <text x="76" y="94.5" text-anchor="middle" font-family="Plus Jakarta Sans, system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" letter-spacing="0.03em">
+    <tspan fill="#0A192F">Lingo</tspan><tspan fill="#0284C7">berg</tspan>
+  </text>
+</svg>

@@ -1,0 +1,206 @@
+{
+  "Metadata": {
+    "Home": {
+      "title": "Lingoberg | Learn German the natural way.",
+      "description": "Dive into captivating stories and let immersive, story-based lessons make mastering German fun, effortless, and effective.",
+      "keywords": "Lingoberg, learn German, German audio stories, interactive word-sync, German vocabulary flashcards, offline German learning"
+    },
+    "Contact": {
+      "title": "Contact & Support | Lingoberg",
+      "description": "Get help with your Lingoberg account, subscription, or German audio stories.",
+      "keywords": "Lingoberg support, contact Lingoberg, Abhyashala Technology Private Limited"
+    },
+    "PrivacyPolicy": {
+      "title": "Privacy Policy | Lingoberg",
+      "description": "Read how Lingoberg (operated by Abhyashala Technology Private Limited) collects, protects, and processes your data under GDPR, CCPA, and Indian law."
+    },
+    "TermsOfService": {
+      "title": "Terms of Service | Lingoberg",
+      "description": "Terms of Service governing your use of the Lingoberg mobile application and story-based German learning services."
+    }
+  },
+  "Navbar": {
+    "features": "Features",
+    "howItWorks": "How It Works",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "getApp": "Get the App"
+  },
+  "Hero": {
+    "badge": "IMMERSIVE STORY-BASED GERMAN LEARNING",
+    "titleLine1": "Learn German",
+    "titleHighlight": "the natural way.",
+    "subtitle": "Dive into captivating stories and let immersive, story-based lessons make mastering German fun, effortless, and effective."
+  },
+  "Features": {
+    "eyebrow": "FEATURES",
+    "title": "Master German effortlessly.",
+    "subtitle": "Everything you need to immerse yourself in the language and track your growth.",
+    "items": {
+      "stories": {
+        "title": "Immersive Audio Stories",
+        "description": "Learn by listening to stories tailored for all skill levels, from Beginner up to Advanced.",
+        "badge": "BEGINNER · INTERMEDIATE · ADVANCED"
+      },
+      "wordSync": {
+        "title": "Interactive Word-Sync",
+        "description": "Words highlight as they are spoken. Tap any word for instant translations.",
+        "badge": "REAL-TIME SYNC"
+      },
+      "flashcards": {
+        "title": "Personal Vocabulary",
+        "description": "Save difficult words and practice them later with smart flashcards.",
+        "badge": "SMART FLASHCARDS"
+      },
+      "offline": {
+        "title": "Offline Freedom",
+        "description": "Download your favorite stories and learn anywhere, even without internet.",
+        "badge": "LEARN ANYWHERE"
+      }
+    }
+  },
+  "HowItWorks": {
+    "eyebrow": "THE LINGOBERG METHOD",
+    "title": "Three steps to natural German fluency.",
+    "subtitle": "Designed around comprehensible input, interactive listening, and active recall.",
+    "steps": {
+      "step1": {
+        "number": "01",
+        "title": "Listen to Captivating Audio Stories",
+        "description": "Choose stories matched to your level (Beginner, Intermediate, or Advanced) and follow along with native German narration."
+      },
+      "step2": {
+        "number": "02",
+        "title": "Tap Any Word for Instant Translation",
+        "description": "Every word highlights as it is spoken. Tap any unfamiliar word mid-story to see its meaning and save it to your personal vocabulary."
+      },
+      "step3": {
+        "number": "03",
+        "title": "Master Words with Smart Flashcards",
+        "description": "Review your saved vocabulary with interactive flashcards and quizzes to lock new German words into long-term memory."
+      }
+    }
+  },
+  "Stats": {
+    "title": "Track your transformation.",
+    "subtitle": "Build a consistent daily German listening and reading habit.",
+    "items": {
+      "streak": {
+        "label": "Streak",
+        "value": "7 Days",
+        "detail": "Stay consistent with daily story goals"
+      },
+      "listening": {
+        "label": "Listening",
+        "value": "120 Min",
+        "detail": "Native German audio immersion"
+      },
+      "words": {
+        "label": "Words",
+        "value": "450 Learned",
+        "detail": "Saved & practiced with flashcards"
+      }
+    }
+  },
+  "Testimonials": {
+    "eyebrow": "TESTIMONIALS",
+    "title": "\"Best German learning app ever.\"",
+    "subtitle": "Join thousands of happy learners mastering German the natural way.",
+    "items": {
+      "sarah": {
+        "name": "Sarah M.",
+        "role": "A2 Learner",
+        "text": "The audio stories are so engaging! I actually look forward to my German lessons now."
+      },
+      "lukas": {
+        "name": "Lukas K.",
+        "role": "B1 Learner",
+        "text": "The word-sync feature is a game-changer. I can finally understand natural German speech."
+      },
+      "elena": {
+        "name": "Elena R.",
+        "role": "Beginner",
+        "text": "I love saving new words to my personal vocabulary. The flashcards are super helpful!"
+      }
+    }
+  },
+  "Faq": {
+    "eyebrow": "FREQUENTLY ASKED QUESTIONS",
+    "title": "Everything you need to know about Lingoberg.",
+    "subtitle": "Have another question? Reach our team anytime at contact@lingoberg.com.",
+    "items": {
+      "q1": {
+        "question": "How does learning with Lingoberg work?",
+        "answer": "Lingoberg helps you learn German naturally through graded audio stories. As you listen to native narration, each word highlights in real time. You can tap any word for an instant translation, save it to your personal vocabulary, and practice it with smart flashcards."
+      },
+      "q2": {
+        "question": "What German levels are supported?",
+        "answer": "Our story library covers Beginner (A1–A2), Intermediate (B1), and Advanced (B2) levels so you can start at your comfort zone and progress naturally."
+      },
+      "q3": {
+        "question": "Can I listen to stories offline?",
+        "answer": "Yes! You can download your favorite German audio stories inside the app and listen anywhere—even on the train or airplane without an internet connection."
+      },
+      "q4": {
+        "question": "How do Personal Vocabulary and Smart Flashcards work?",
+        "answer": "Whenever you tap an unfamiliar German word while listening to a story, you can save it with one tap. Those saved words are automatically added to your personal flashcard deck so you can review and master them at your own pace."
+      },
+      "q5": {
+        "question": "Is Lingoberg ad-free?",
+        "answer": "Yes, Lingoberg is 100% ad-free. Your learning experience will never be interrupted by third-party advertisements."
+      }
+    }
+  },
+  "Cta": {
+    "badge": "AVAILABLE ON IOS & ANDROID",
+    "title": "Learn German the natural way.",
+    "subtitle": "Download Lingoberg on the App Store or Google Play and start mastering German through captivating stories today!"
+  },
+  "Contact": {
+    "tagline": "Lingoberg Support & Inquiries",
+    "pageTitle": "How can we help you?",
+    "pageSubtitle": "Whether you have a question about your Lingoberg account, German audio stories, flashcards, or subscription billing, our team is ready to assist.",
+    "emailCardTitle": "Direct Support Email",
+    "emailAddress": "contact@lingoberg.com",
+    "copyEmail": "Copy Email Address",
+    "copied": "Copied to Clipboard",
+    "sendEmail": "Send an Email",
+    "categoriesTitle": "What can we help you with?",
+    "categoriesSubtitle": "Include your account email in your message so we can assist you faster.",
+    "categories": {
+      "account": {
+        "title": "Account & Subscriptions",
+        "desc": "Help with Google/Apple Sign-In, App Store or Google Play subscriptions, or account and data deletion requests."
+      },
+      "exam": {
+        "title": "Audio Stories & Vocabulary",
+        "desc": "Questions or feedback about German audio stories, word-sync translations, quizzes, or flashcards."
+      },
+      "technical": {
+        "title": "Technical Support",
+        "desc": "Report audio playback, offline download, or app performance issues on iOS or Android."
+      }
+    }
+  },
+  "Footer": {
+    "description": "Learn German the natural way through immersive, story-based lessons.",
+    "product": "Product",
+    "company": "Support",
+    "legal": "Legal",
+    "links": {
+      "stories": "Features",
+      "howItWorks": "How It Works",
+      "faq": "FAQ",
+      "contact": "Contact Support",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    },
+    "copyright": "© 2026 Lingoberg. Operated by Abhyashala Technology Private Limited. All rights reserved."
+  },
+  "CookieConsent": {
+    "message": "We use essential cookies and privacy-friendly analytics to improve your experience on Lingoberg. Read our ",
+    "privacyPolicy": "Privacy Policy",
+    "decline": "Decline Optional",
+    "acceptAll": "Accept"
+  }
+}

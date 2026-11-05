@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <title>Lingoberg · Official Branding & Loading Architecture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --card-bg: rgba(22, 27, 34, 0.85);
+      --border: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #0A84FF;
+      --sky-blue: #0284C7;
+      --navy: #0A192F;
+      --silver: #94A3B8;
+      --anim-duration: 3.5s;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.5;
+      padding: 2.5rem 1.5rem 5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-title h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(10, 132, 255, 0.15);
+      color: var(--accent-blue);
+      border: 1px solid rgba(10, 132, 255, 0.3);
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      padding: 0.6rem 1.2rem;
+      background: #161b22;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover, .nav-btn.active {
+      background: #21262d;
+      color: #fff;
+      border-color: var(--accent-blue);
+    }
+
+    /* Alert Banner */
+    .fix-banner {
+      background: rgba(2, 132, 199, 0.12);
+      border: 1px solid rgba(2, 132, 199, 0.35);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .fix-banner-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .fix-banner-text h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #38BDF8;
+      margin-bottom: 0.25rem;
+    }
+
+    .fix-banner-text p {
+      font-size: 0.85rem;
+      color: #CBD5E1;
+    }
+
+    /* Section Headers */
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 3rem 0 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .section-title h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-top: -0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      gap: 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Logo Cards */
+    .logo-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .theme-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .theme-pill .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .stage-light {
+      background: #FFFFFF;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .stage-dark {
+      background: #121212;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      border-bottom: 1px solid #23272f;
+    }
+
+    .horizontal-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-text {
+      font-size: 34px;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    /* Unified equal font weights (ExtraBold 800) */
+    .text-light-lingo { color: #0A192F; font-weight: 800; }
+    .text-light-berg  { color: #0284C7; font-weight: 800; }
+
+    .text-dark-lingo  { color: #CBD5E1; font-weight: 800; }
+    .text-dark-berg   { color: #0A84FF; font-weight: 800; }
+
+    .mark-showcase {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .mark-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .mark-box span {
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: #64748b;
+    }
+
+    /* Token Specifications Table */
+    .specs-table {
+      padding: 1.5rem;
+      background: rgba(13, 17, 23, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      flex-grow: 1;
+    }
+
+    .spec-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .spec-label {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .color-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      color: #fff;
+      background: #1c2128;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #30363d;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .color-chip:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-1px);
+    }
+
+    .chip-swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .card-footer {
+      padding: 1rem 1.5rem;
+      background: #161b22;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      background: #21262d;
+      color: #f0f6fc;
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #30363d;
+      border-color: #8b949e;
+    }
+
+    .btn-primary {
+      background: var(--accent-blue);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #0070E0;
+    }
+
+    /* Typography Inspector Grid */
+    .typo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .typo-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .typo-card.recommended {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 20px rgba(10, 132, 255, 0.15);
+    }
+
+    .typo-preview-box {
+      background: #FFFFFF;
+      padding: 1.5rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80px;
+    }
+
+    .typo-preview-box.dark {
+      background: #121212;
+    }
+
+    /* ============================================================ */
+    /* FULL LOADING MODAL SYSTEM (Exact Replica of dMAT Prep)       */
+    /* ============================================================ */
+    @keyframes logo-spin-wave {
+      0%   { transform: rotate(0deg); }
+      20%  { transform: rotate(90deg); }
+      40%  { transform: rotate(360deg); }
+      60%  { transform: rotate(450deg); }
+      85%  { transform: rotate(720deg); }
+      100% { transform: rotate(720deg); }
+    }
+
+    .spin-mark {
+      animation: logo-spin-wave var(--anim-duration) ease-in-out infinite;
+      transform-origin: center center;
+    }
+
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 0.85; transform: scale(0.98); }
+      50%      { opacity: 1; transform: scale(1.05); }
+    }
+
+    @keyframes progress-shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(200%); }
+    }
+
+    .modal-viewport {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .viewport-light {
+      background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
+      border: 1px solid #CBD5E1;
+    }
+
+    .viewport-dark {
+      background: radial-gradient(circle at 50% 30%, #1e293b 0%, #0F172A 100%);
+      border: 1px solid #334155;
+    }
+
+    .modal-box {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      padding: 2.5rem 2rem 2rem;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      transition: all 0.3s ease;
+    }
+
+    .modal-light {
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: 0 25px 50px -12px rgba(10, 25, 47, 0.18), 0 0 0 1px rgba(2, 132, 199, 0.05);
+      color: #0A192F;
+    }
+
+    .modal-dark {
+      background: rgba(30, 30, 30, 0.96);
+      border: 1px solid rgba(51, 65, 85, 0.7);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(10, 132, 255, 0.15);
+      color: #F8FAFC;
+    }
+
+    .glow-container {
+      position: relative;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Subtle ambient aura (reverted to original dMAT values) */
+    .ambient-glow-light {
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      background: rgba(2, 132, 199, 0.25);
+      filter: blur(20px);
+      animation: pulse-subtle 2.5s ease-in-out infinite;
+    }
+
+    .ambient-glow-dark {
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      background: rgba(10, 132, 255, 0.35);
+      filter: blur(24px);
+      animation: pulse-subtle 2.5s ease-in-out infinite;
+    }
+
+    .modal-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+
+    .modal-msg {
+      font-size: 0.85rem;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .modal-light .modal-msg { color: #64748B; }
+    .modal-dark .modal-msg  { color: #94A3B8; }
+
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      border-radius: 9999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .modal-light .progress-track { background: #E2E8F0; }
+    .modal-dark .progress-track  { background: #334155; }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 9999px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modal-light .progress-fill {
+      background: #0284C7;
+      width: 65%;
+    }
+
+    .modal-dark .progress-fill {
+      background: #0A84FF;
+      width: 65%;
+    }
+
+    .progress-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+      animation: progress-shimmer 2s infinite linear;
+    }
+
+    .modal-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+    }
+
+    .modal-light .modal-pill {
+      background: rgba(2, 132, 199, 0.1);
+      color: #0284C7;
+      border: 1px solid rgba(2, 132, 199, 0.2);
+    }
+
+    .modal-dark .modal-pill {
+      background: rgba(10, 132, 255, 0.15);
+      color: #0A84FF;
+      border: 1px solid rgba(10, 132, 255, 0.3);
+    }
+
+    .control-toolbar {
+      background: #161b22;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .control-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .speed-btn {
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #21262d;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .speed-btn:hover, .speed-btn.active {
+      background: var(--accent-blue);
+      color: #fff;
+      border-color: var(--accent-blue);
+    }
+
+    .micro-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .micro-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .micro-title {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Fullscreen Overlay Test Modal */
+    .fs-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      animation: fadeIn 0.2s ease-out;
+    }
+
+    .fs-backdrop.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .close-modal-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      font-size: 1.25rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+    }
+
+    .close-modal-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #1F2937;
+      color: #fff;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      border: 1px solid #374151;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      display: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      z-index: 10000;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .toast.show {
+      display: flex;
+      animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes toastIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="header-top">
+      <div class="brand-title">
+        <svg width="38" height="44" viewBox="-2 -2 38 43" style="overflow: visible;" fill="none">
+  <g stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+  <g stroke="#0A84FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+</svg>
+        <div>
+          <h1>Lingoberg <span style="font-size: 1rem; font-weight: 400; color: var(--text-muted);">Brand Identity & UI State Kit</span></h1>
+        </div>
+      </div>
+      <span class="badge">Official Brand Package · 2026</span>
+    </div>
+
+    <div class="nav-tabs">
+      <a href="#stacked-logo-section" class="nav-btn active">📱 Splash & Stacked Logo</a>
+      <a href="#inline-o-concept" class="nav-btn">🔮 'O' Replaced by Logo</a>
+      <a href="#static-logos" class="nav-btn">💎 Standard Logos (Mark Left)</a>
+      <a href="#loading-modals" class="nav-btn">⚡ Loading Modals</a>
+    </div>
+  </header>
+
+    <!-- ========================================== -->
+  <!-- SECTION 0: 'O' REPLACED BY LOGO MARK       -->
+  <!-- ========================================== -->
+  <section id="inline-o-concept" style="margin-bottom: 4rem;">
+    <div class="section-title">
+      <h2>🔮 'O' Replaced by Logo Mark (Inline Symbol)</h2>
+      <span style="font-size: 0.85rem; color: var(--text-muted);">Embedded Crystal Mark Experiment</span>
+    </div>
+    <p class="section-desc">
+      The letter <strong>"o"</strong> in <em>Lingoberg</em> is seamlessly swapped with the crystal mark. 
+      The hexagonal facet structure mirrors the circular geometry of "o", while the central ridge crests upwards like a mountain peak.
+    </p>
+
+    <!-- Interactive Live Size Selector -->
+    <div class="control-toolbar" style="margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+      <div class="control-group">
+        <span class="control-label">Weight:</span>
+        <button class="speed-btn active" onclick="setInlineWeight('600', this)">SemiBold (600)</button>
+        <button class="speed-btn" onclick="setInlineWeight('700', this)">Bold (700)</button>
+        <button class="speed-btn" onclick="setInlineWeight('500', this)">Medium (500)</button>
+        <button class="speed-btn" onclick="setInlineWeight('800', this)">ExtraBold (800)</button>
+      </div>
+
+      <div class="control-group">
+        <span class="control-label">Size:</span>
+        <button class="speed-btn" onclick="setInlineSize('28px', this)">Compact (28px)</button>
+        <button class="speed-btn active" onclick="setInlineSize('44px', this)">Standard (44px)</button>
+        <button class="speed-btn" onclick="setInlineSize('64px', this)">Large Hero (64px)</button>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Light Mode Inline Card -->
+      <div class="logo-card">
+        <div class="card-header">
+          <div class="theme-pill">
+            <span class="dot" style="background: #0284C7;"></span>
+            <span>Light Mode · 'o' Replaced by Mark</span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Option B Colors</span>
+        </div>
+
+        <div class="stage-light" style="padding: 2.5rem 1.5rem; gap: 2.2rem; align-items: stretch;">
+
+          <!-- Variant 1: Title Case Natural X-Height -->
+          <div style="display: flex; flex-direction: column; gap: 0.4rem; padding-bottom: 1.5rem; border-bottom: 1px solid #E2E8F0;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.72rem; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.05em;">Variant 1 · Natural X-Height (Title Case)</span>
+              <span class="modal-pill" style="font-size: 0.68rem; padding: 0.15rem 0.5rem; background: rgba(2, 132, 199, 0.1); color: #0284C7;">Recommended</span>
+            </div>
+            <div class="inline-preview-row" style="font-size: 44px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; display: inline-flex; align-items: baseline;">
+              <span style="color: #0A192F;">Ling</span>
+              <svg viewBox="-2 -2 38 43" style="overflow:visible; height: 0.6em; width: auto; vertical-align: -0.05em; margin: 0 0.04em;" fill="none">
+      <g stroke="#0A192F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+      <g stroke="#0284C7" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+    </svg>
+              <span style="color: #0284C7;">berg</span>
+            </div>
+            <span style="font-size: 0.78rem; color: #64748B;">Mark sits naturally on baseline; peak crests slightly above lowercase letters.</span>
+          </div>
+
+          <!-- Variant 2: All Lowercase (Examberg Style) -->
+          <div style="display: flex; flex-direction: column; gap: 0.4rem; padding-bottom: 1.5rem; border-bottom: 1px solid #E2E8F0;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.72rem; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.05em;">Variant 2 · All-Lowercase (Examberg Rhythm)</span>
+            </div>
+            <div class="inline-preview-row" style="font-size: 44px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; display: inline-flex; align-items: baseline;">
+              <span style="color: #0A192F;">ling</span>
+              <svg viewBox="-2 -2 38 43" style="overflow:visible; height: 0.6em; width: auto; vertical-align: -0.05em; margin: 0 0.04em;" fill="none">
+      <g stroke="#0A192F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+      <g stroke="#0284C7" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+    </svg>
+              <span style="color: #0284C7;">berg</span>
+            </div>
+            <span style="font-size: 0.78rem; color: #64748B;">All lowercase geometry with identical stem rhythm across all glyphs.</span>
+          </div>
+
+          <!-- Variant 3: Cap-Height Centerpiece Peak -->
+          <div style="display: flex; flex-direction: column; gap: 0.4rem; padding-bottom: 1.5rem; border-bottom: 1px solid #E2E8F0;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.72rem; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.05em;">Variant 3 · Cap-Height Centerpiece Emblem</span>
+            </div>
+            <div class="inline-preview-row" style="font-size: 44px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; display: inline-flex; align-items: baseline;">
+              <span style="color: #0A192F;">Ling</span>
+              <svg viewBox="-2 -2 38 43" style="overflow:visible; height: 0.78em; width: auto; vertical-align: -0.07em; margin: 0 0.14em 0 0.12em;" fill="none">
+      <g stroke="#0A192F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+      <g stroke="#0284C7" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+    </svg>
+              <span style="color: #0284C7;">berg</span>
+            </div>
+            <span style="font-size: 0.78rem; color: #64748B;">Taller mark matching top of "L" and ascender of "b".</span>
+          </div>
+
+          <!-- Variant 4: Solid Navy Text with Dual Blue Ridge Accent -->
+          <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.72rem; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.05em;">Variant 4 · Unified Navy Text (Mark as Focal Accent)</span>
+            </div>
+            <div class="inline-preview-row" style="font-size: 44px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; display: inline-flex; align-items: baseline;">
+              <span style="color: #0A192F;">Ling</span>
+              <svg viewBox="-2 -2 38 43" style="overflow:visible; height: 0.6em; width: auto; vertical-align: -0.05em; margin: 0 0.04em;" fill="none">
+      <g stroke="#0A192F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+      <g stroke="#0284C7" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+    </svg>
+              <span style="color: #0A192F;">berg</span>
+            </div>
+            <span style="font-size: 0.78rem; color: #64748B;">Both words in Deep Navy; the crystal mark provides the solitary Sky Blue focal point.</span>
+          </div>
+
+        </div>
+
+        <div class="card-footer" style="flex-wrap: wrap; gap: 0.5rem;">
+          <a href="assets/logo-inline-o-light.svg" download="lingoberg-inline-o-light.svg" class="btn btn-secondary">⬇ Inline SVG</a>
+          <a href="assets/logo-inline-o-light.png" download="lingoberg-inline-o-light.png" class="btn btn-secondary">⬇ Inline PNG</a>
+          <button class="btn btn-secondary" onclick="copySvg('logo-inline-o-light.svg')">📋 Copy SVG</button>
+        </div>
+      </div>
+
+      <!-- Dark Mode Inline Card -->
+      <div class="logo-card">
+        <div class="card-header">
+          <div class="theme-pill">
+            <span class="dot" style="background: #0A84FF;"></span>
+            <span>Dark Mode · 'o' Replaced by Mark</span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Option 5 Colors</span>
+        </div>
+
+        <div class="stage-dark" style="padding: 2.5rem 1.5rem; gap: 2.2rem; align-items: stretch;">
+
+          <!-- Variant 1: Title Case Natural X-Height -->
+          <div style="display: flex; flex-direction: column; gap: 0.4rem; padding-bottom: 1.5rem; border-bottom: 1px solid #23272f;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em;">Variant 1 · Natural X-Height (Title Case)</span>
+              <span class="modal-pill" style="font-size: 0.68rem; padding: 0.15rem 0.5rem; background: rgba(10, 132, 255, 0.15); color: #0A84FF;">Recommended</span>
+            </div>
+            <div class="inline-preview-row" style="font-size: 44px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; display: inline-flex; align-items: baseline;">
+              <span style="color: #CBD5E1;">Ling</span>
+              <svg viewBox="-2 -2 38 43" style="overflow:visible; height: 0.6em; width: auto; vertical-align: -0.05em; margin: 0 0.04em;" fill="none">
+      <g stroke="#94A3B8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+      <g stroke="#0A84FF" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+    </svg>
+              <span style="color: #0A84FF;">berg</span>
+            </div>
+            <span style="font-size: 0.78rem; color: #94A3B8;">Titanium Silver stems + Electric Blue mountain ridge and "berg" accent.</span>
+          </div>
+
+          <!-- Variant 2: All Lowercase (Examberg Style) -->
+          <div style="display: flex; flex-direction: column; gap: 0.4rem; padding-bottom: 1.5rem; border-bottom: 1px solid #23272f;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em;">Variant 2 · All-Lowercase (Examberg Rhythm)</span>
+            </div>
+            <div class="inline-preview-row" style="font-size: 44px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; display: inline-flex; align-items: baseline;">
+              <span style="color: #CBD5E1;">ling</span>
+              <svg viewBox="-2 -2 38 43" style="overflow:visible; height: 0.6em; width: auto; vertical-align: -0.05em; margin: 0 0.04em;" fill="none">
+      <g stroke="#94A3B8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+      <g stroke="#0A84FF" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+    </svg>
+              <span style="color: #0A84FF;">berg</span>
+            </div>
+            <span style="font-size: 0.78rem; color: #94A3B8;">All lowercase geometry with titanium silver letters and electric blue peak.</span>
+          </div>
+
+          <!-- Variant 3: Cap-Height Centerpiece Peak -->
+          <div style="display: flex; flex-direction: column; gap: 0.4rem; padding-bottom: 1.5rem; border-bottom: 1px solid #23272f;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em;">Variant 3 · Cap-Height Centerpiece Emblem</span>
+            </div>
+            <div class="inline-preview-row" style="font-size: 44px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; display: inline-flex; align-items: baseline;">
+              <span style="color: #CBD5E1;">Ling</span>
+              <svg viewBox="-2 -2 38 43" style="overflow:visible; height: 0.78em; width: auto; vertical-align: -0.07em; margin: 0 0.14em 0 0.12em;" fill="none">
+      <g stroke="#94A3B8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+      <g stroke="#0A84FF" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+    </svg>
+              <span style="color: #0A84FF;">berg</span>
+            </div>
+            <span style="font-size: 0.78rem; color: #94A3B8;">Prominent crystal height matching the tall vertical ascenders.</span>
+          </div>
+
+          <!-- Variant 4: Pure White Text with Electric Blue Peak -->
+          <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.72rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em;">Variant 4 · Pure White Text (Electric Blue Mark Accent)</span>
+            </div>
+            <div class="inline-preview-row" style="font-size: 44px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; display: inline-flex; align-items: baseline;">
+              <span style="color: #FFFFFF;">Ling</span>
+              <svg viewBox="-2 -2 38 43" style="overflow:visible; height: 0.6em; width: auto; vertical-align: -0.05em; margin: 0 0.04em;" fill="none">
+      <g stroke="#94A3B8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+      <g stroke="#0A84FF" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+    </svg>
+              <span style="color: #FFFFFF;">berg</span>
+            </div>
+            <span style="font-size: 0.78rem; color: #94A3B8;">Maximum contrast with pure white letters; crystal mark acts as the focal badge.</span>
+          </div>
+
+        </div>
+
+        <div class="card-footer" style="flex-wrap: wrap; gap: 0.5rem;">
+          <a href="assets/logo-inline-o-dark.svg" download="lingoberg-inline-o-dark.svg" class="btn btn-secondary">⬇ Inline SVG</a>
+          <a href="assets/logo-inline-o-dark.png" download="lingoberg-inline-o-dark.png" class="btn btn-secondary">⬇ Inline PNG</a>
+          <button class="btn btn-secondary" onclick="copySvg('logo-inline-o-dark.svg')">📋 Copy SVG</button>
+        </div>
+      </div>
+    </div>
+  </section>
+    <!-- ========================================== -->
+  <!-- SECTION: SPLASH SCREEN & LAUNCH EMBLEMS     -->
+  <!-- ========================================== -->
+  <section id="stacked-logo-section" style="margin-bottom: 4rem;">
+    <div class="section-title">
+      <h2>📱 Splash Screen & Launch Options</h2>
+      <span style="font-size: 0.85rem; color: var(--text-muted);">Comparing Option 1 (Stacked Emblem) vs Option 2 (Variant 3 Cap-Height Hero)</span>
+    </div>
+    <p class="section-desc">
+      Explore both launch screen candidates for the Lingoberg mobile & web apps.
+      Both options feature optimized letter-spacing, zero clipping, and custom light/dark color harmonies.
+    </p>
+
+            <!-- Switcher Bar for Splash Candidates -->
+    <div class="control-toolbar" style="margin-bottom: 2rem; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <div class="control-group">
+        <span class="control-label">Splash Candidate:</span>
+        <button id="btn-opt-v3" class="speed-btn active" onclick="switchSplashOption('v3', this)">
+          ✨ Option B · Variant 3 (Ling[💎]berg SemiBold Hero)
+        </button>
+        <button id="btn-opt-stacked" class="speed-btn" onclick="switchSplashOption('stacked', this)">
+          📐 Option A · Stacked 2-Line (Logo + Lingoberg)
+        </button>
+      </div>
+
+      <button class="btn btn-primary" onclick="replaySplash()" style="background: #0284C7; color: #fff;">
+        ▶ Replay Launch Animation
+      </button>
+    </div>
+
+        <!-- Dark Mode iPhone Mockup -->
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 0.85rem;">
+          <span style="font-size: 0.85rem; font-weight: 700; color: #E2E8F0;">Dark Mode Launch Screen (1284×2778)</span>
+          <div id="phone-dark" style="width: 270px; height: 550px; background: #0A192F; border-radius: 46px; border: 9px solid #1E293B; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5), inset 0 0 0 2px #334155; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <!-- Dynamic Island -->
+            <div style="position: absolute; top: 12px; width: 88px; height: 24px; background: #000; border-radius: 14px; z-index: 10;"></div>
+            <!-- Ambient Glow -->
+            <div style="position: absolute; width: 250px; height: 250px; background: radial-gradient(circle, rgba(10,132,255,0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+            <!-- Splash Content -->
+            <div id="splash-content-dark" class="splash-inner" style="display: flex; flex-direction: column; align-items: center; transform: translateY(-12px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);">
+              <img id="splash-img-dark" src="assets/splash-variant3-dark.svg" alt="Splash Dark" style="width: 200px; height: auto;">
+            </div>
+            <!-- Home Bar Indicator -->
+            <div style="position: absolute; bottom: 8px; width: 110px; height: 4px; background: #475569; border-radius: 2px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Candidate Detailed Breakdown & Assets -->
+    <div class="section-title" style="margin-top: 2rem;">
+      <h3 style="font-size: 1.25rem;">✨ Candidate 1: Variant 3 (Inline 'o' Centerpiece Peak · SemiBold 600 · Large Hero)</h3>
+    </div>
+
+    <div class="grid-2" style="margin-bottom: 3rem;">
+      <!-- Light Mode Variant 3 Card -->
+      <div class="logo-card">
+        <div class="card-header">
+          <div class="theme-pill">
+            <span class="dot" style="background: #0284C7;"></span>
+            <span>Light Mode · Variant 3 Splash</span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">assets/splash-variant3-light.svg</span>
+        </div>
+
+        <div class="stage-light" style="padding: 2.5rem 1.5rem; min-height: 180px; display: flex; align-items: center; justify-content: center;">
+          <img src="assets/splash-variant3-light.svg" alt="Lingoberg Variant 3 Light" style="width: 250px; height: auto;">
+        </div>
+
+        <div class="specs-table">
+          <div class="spec-row">
+            <span class="spec-label">Style & Weight</span>
+            <span style="font-size: 0.85rem; color: #fff;">SemiBold (600) · Large Hero (64px base)</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Optical Padding</span>
+            <span style="font-size: 0.85rem; color: #34D399; font-weight: 700; font-family: 'JetBrains Mono', monospace;">Balanced ±6.5px Gap on Left & Right of Mark</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Palette</span>
+            <span style="font-size: 0.85rem; color: #CBD5E1;">Deep Navy <code>#0A192F</code> + Sky Blue <code>#0284C7</code></span>
+          </div>
+        </div>
+
+        <div class="card-footer" style="flex-wrap: wrap; gap: 0.5rem;">
+          <a href="assets/splash-variant3-light.svg" download="lingoberg-splash-v3-light.svg" class="btn btn-secondary">⬇ Splash SVG</a>
+          <a href="assets/splash-variant3-light.png" download="lingoberg-splash-v3-light.png" class="btn btn-secondary">⬇ Retina PNG (3020×632)</a>
+          <a href="assets/splash-screen-v3-light.png" download="lingoberg-splash-screen-v3-light.png" class="btn btn-secondary">📱 Mobile Launch Screen</a>
+          <button class="btn btn-secondary" onclick="copySvg('splash-variant3-light.svg')">📋 Copy SVG</button>
+        </div>
+      </div>
+
+      <!-- Dark Mode Variant 3 Card -->
+      <div class="logo-card">
+        <div class="card-header">
+          <div class="theme-pill">
+            <span class="dot" style="background: #0A84FF;"></span>
+            <span>Dark Mode · Variant 3 Splash</span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">assets/splash-variant3-dark.svg</span>
+        </div>
+
+        <div class="stage-dark" style="padding: 2.5rem 1.5rem; min-height: 180px; display: flex; align-items: center; justify-content: center;">
+          <img src="assets/splash-variant3-dark.svg" alt="Lingoberg Variant 3 Dark" style="width: 250px; height: auto;">
+        </div>
+
+        <div class="specs-table">
+          <div class="spec-row">
+            <span class="spec-label">Style & Weight</span>
+            <span style="font-size: 0.85rem; color: #fff;">SemiBold (600) · Large Hero (64px base)</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Optical Padding</span>
+            <span style="font-size: 0.85rem; color: #34D399; font-weight: 700; font-family: 'JetBrains Mono', monospace;">Balanced ±6.5px Gap on Left & Right of Mark</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Palette</span>
+            <span style="font-size: 0.85rem; color: #CBD5E1;">Titanium <code>#CBD5E1</code> + Electric Blue <code>#0A84FF</code></span>
+          </div>
+        </div>
+
+        <div class="card-footer" style="flex-wrap: wrap; gap: 0.5rem;">
+          <a href="assets/splash-variant3-dark.svg" download="lingoberg-splash-v3-dark.svg" class="btn btn-secondary">⬇ Splash SVG</a>
+          <a href="assets/splash-variant3-dark.png" download="lingoberg-splash-v3-dark.png" class="btn btn-secondary">⬇ Retina PNG (3020×632)</a>
+          <a href="assets/splash-screen-v3-dark.png" download="lingoberg-splash-screen-v3-dark.png" class="btn btn-secondary">📱 Mobile Launch Screen</a>
+          <button class="btn btn-secondary" onclick="copySvg('splash-variant3-dark.svg')">📋 Copy SVG</button>
+        </div>
+      </div>
+    </div>
+
+            <!-- Candidate 2: Stacked 2-Line Emblem -->
+    <div class="section-title">
+      <h3 style="font-size: 1.25rem;">📐 Candidate 2: Stacked 2-Line Emblem (Mark 1.5x + Centered Lingoberg)</h3>
+    </div>
+
+    <div class="grid-2">
+      <!-- Light Mode Stacked Card -->
+      <div class="logo-card">
+        <div class="card-header">
+          <div class="theme-pill">
+            <span class="dot" style="background: #0284C7;"></span>
+            <span>Light Mode · Stacked Splash</span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">assets/logo-splash-light.svg</span>
+        </div>
+
+        <div class="stage-light" style="padding: 1.75rem 1rem; min-height: 180px; display: flex; align-items: center; justify-content: center;">
+          <img src="assets/logo-splash-light.svg" alt="Lingoberg Stacked Light" style="width: 175px; height: auto;">
+        </div>
+
+        <div class="specs-table">
+          <div class="spec-row">
+            <span class="spec-label">Line 1 (Top)</span>
+            <span style="font-size: 0.85rem; color: #fff;">Centered Mark 1.5x (Chassis <code>#0A192F</code> + Ridge <code>#0284C7</code>)</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Line 2 (Bottom)</span>
+            <span style="font-size: 0.85rem; color: #fff;">Centered <strong>Lingo</strong> + <strong>berg</strong> (Letter-spacing +0.03em)</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Bounding Box</span>
+            <span style="font-size: 0.85rem; color: #38BDF8; font-family: 'JetBrains Mono', monospace;">viewBox="0 0 152 106"</span>
+          </div>
+        </div>
+
+        <div class="card-footer" style="flex-wrap: wrap; gap: 0.5rem;">
+          <a href="assets/logo-splash-light.svg" download="lingoberg-splash-stacked-light.svg" class="btn btn-secondary">⬇ Splash SVG</a>
+          <a href="assets/logo-splash-light.png" download="lingoberg-splash-stacked-light.png" class="btn btn-secondary">⬇ Retina PNG (2559×1787)</a>
+          <a href="assets/splash-screen-light.png" download="lingoberg-splash-screen-stacked-light.png" class="btn btn-secondary">📱 Mobile Launch Screen</a>
+          <button class="btn btn-secondary" onclick="copySvg('logo-splash-light.svg')">📋 Copy SVG</button>
+        </div>
+      </div>
+
+      <!-- Dark Mode Stacked Card -->
+      <div class="logo-card">
+        <div class="card-header">
+          <div class="theme-pill">
+            <span class="dot" style="background: #0A84FF;"></span>
+            <span>Dark Mode · Stacked Splash</span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">assets/logo-splash-dark.svg</span>
+        </div>
+
+        <div class="stage-dark" style="padding: 1.75rem 1rem; min-height: 180px; display: flex; align-items: center; justify-content: center;">
+          <img src="assets/logo-splash-dark.svg" alt="Lingoberg Stacked Dark" style="width: 175px; height: auto;">
+        </div>
+
+        <div class="specs-table">
+          <div class="spec-row">
+            <span class="spec-label">Line 1 (Top)</span>
+            <span style="font-size: 0.85rem; color: #fff;">Centered Mark 1.5x (Chassis <code>#94A3B8</code> + Ridge <code>#0A84FF</code>)</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Line 2 (Bottom)</span>
+            <span style="font-size: 0.85rem; color: #fff;">Centered <strong>Lingo</strong> + <strong>berg</strong> (Letter-spacing +0.03em)</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Bounding Box</span>
+            <span style="font-size: 0.85rem; color: #38BDF8; font-family: 'JetBrains Mono', monospace;">viewBox="0 0 152 106"</span>
+          </div>
+        </div>
+
+        <div class="card-footer" style="flex-wrap: wrap; gap: 0.5rem;">
+          <a href="assets/logo-splash-dark.svg" download="lingoberg-splash-stacked-dark.svg" class="btn btn-secondary">⬇ Splash SVG</a>
+          <a href="assets/logo-splash-dark.png" download="lingoberg-splash-stacked-dark.png" class="btn btn-secondary">⬇ Retina PNG (2559×1787)</a>
+          <a href="assets/splash-screen-dark.png" download="lingoberg-splash-screen-stacked-dark.png" class="btn btn-secondary">📱 Mobile Launch Screen</a>
+          <button class="btn btn-secondary" onclick="copySvg('logo-splash-dark.svg')">📋 Copy SVG</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECTION 1: STATIC THEME LOGOS               -->
+  <!-- ========================================== -->
+  <section id="static-logos">
+    <div class="section-title">
+      <h2>💎 Static Theme Logos</h2>
+      <span style="font-size: 0.85rem; color: var(--text-muted);">Finalized Light (Option B) & Dark (Option 5)</span>
+    </div>
+    <p class="section-desc">
+      Every facet and perimeter stroke is derived with 0px coordinate drift from the original crystal geometry. 
+      Stroke widths are tuned for retina mobile rendering: Chassis at 1.8px–2.0px and the Mountain Ridge peak accent at 2.8px.
+    </p>
+
+    <div class="grid-2">
+      <!-- Light Mode Card -->
+      <div class="logo-card">
+        <div class="card-header">
+          <div class="theme-pill">
+            <span class="dot" style="background: #0284C7;"></span>
+            <span>Light Mode · Option B (Finalized)</span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">assets/logo-with-text.svg</span>
+        </div>
+
+        <div class="stage-light">
+          <!-- Horizontal Master Logo -->
+          <div class="horizontal-logo">
+            <svg width="44" height="50" viewBox="-2 -2 38 43" style="overflow: visible;" fill="none">
+  <g stroke="#0A192F" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+  <g stroke="#0284C7" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+</svg>
+            <div class="logo-text">
+              <span class="text-light-lingo">Lingo</span><span class="text-light-berg">berg</span>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="specs-table">
+          <div class="spec-row">
+            <span class="spec-label">Chassis (Base Crystal)</span>
+            <div class="color-chip" onclick="copyText('#0A192F')">
+              <span class="chip-swatch" style="background: #0A192F;"></span>
+              <span>#0A192F · Deep Navy (2.0px)</span>
+            </div>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Mountain Ridge (Apex)</span>
+            <div class="color-chip" onclick="copyText('#0284C7')">
+              <span class="chip-swatch" style="background: #0284C7;"></span>
+              <span>#0284C7 · Sky Blue (2.8px)</span>
+            </div>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Typography Weight Balance</span>
+            <span style="font-size: 0.85rem; color: #fff;"><strong>Lingo (800)</strong> + <strong>berg (800)</strong></span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">App Surface Canvas</span>
+            <div class="color-chip" onclick="copyText('#FFFFFF')">
+              <span class="chip-swatch" style="background: #FFFFFF;"></span>
+              <span>#FFFFFF · Pure White</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer" style="flex-wrap: wrap; gap: 0.5rem;">
+          <a href="assets/logo-light.svg" download="lingoberg-logo-light.svg" class="btn btn-secondary">⬇ Logo SVG</a>
+          <a href="assets/logo-light.png" download="lingoberg-logo-light.png" class="btn btn-secondary">⬇ Logo PNG</a>
+          <a href="assets/mark-light.svg" download="lingoberg-mark-light.svg" class="btn btn-secondary">⬇ Mark SVG</a>
+          <a href="assets/mark-light.png" download="lingoberg-mark-light.png" class="btn btn-secondary">⬇ Mark PNG</a>
+          <button class="btn btn-secondary" onclick="copySvg('logo-light.svg')">📋 Copy SVG</button>
+        </div>
+      </div>
+
+      <!-- Dark Mode Card -->
+      <div class="logo-card">
+        <div class="card-header">
+          <div class="theme-pill">
+            <span class="dot" style="background: #0A84FF;"></span>
+            <span>Dark Mode · Option 5 (Finalized)</span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">assets/logo-with-text-dark.svg</span>
+        </div>
+
+        <div class="stage-dark">
+          <!-- Horizontal Master Logo -->
+          <div class="horizontal-logo">
+            <svg width="44" height="50" viewBox="-2 -2 38 43" style="overflow: visible;" fill="none">
+  <g stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+  <g stroke="#0A84FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+</svg>
+            <div class="logo-text">
+              <span class="text-dark-lingo">Lingo</span><span class="text-dark-berg">berg</span>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="specs-table">
+          <div class="spec-row">
+            <span class="spec-label">Chassis (Base Crystal)</span>
+            <div class="color-chip" onclick="copyText('#94A3B8')">
+              <span class="chip-swatch" style="background: #94A3B8;"></span>
+              <span>#94A3B8 · Titanium Silver (1.8px)</span>
+            </div>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Mountain Ridge (Apex)</span>
+            <div class="color-chip" onclick="copyText('#0A84FF')">
+              <span class="chip-swatch" style="background: #0A84FF;"></span>
+              <span>#0A84FF · Electric Blue (2.8px)</span>
+            </div>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Typography Weight Balance</span>
+            <span style="font-size: 0.85rem; color: #fff;"><strong>Lingo (800)</strong> + <strong>berg (800)</strong></span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">App Surface Canvas</span>
+            <div class="color-chip" onclick="copyText('#121212')">
+              <span class="chip-swatch" style="background: #121212;"></span>
+              <span>#121212 · Deep Obsidian</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer" style="flex-wrap: wrap; gap: 0.5rem;">
+          <a href="assets/logo-dark.svg" download="lingoberg-logo-dark.svg" class="btn btn-secondary">⬇ Logo SVG</a>
+          <a href="assets/logo-dark.png" download="lingoberg-logo-dark.png" class="btn btn-secondary">⬇ Logo PNG</a>
+          <a href="assets/mark-dark.svg" download="lingoberg-mark-dark.svg" class="btn btn-secondary">⬇ Mark SVG</a>
+          <a href="assets/mark-dark.png" download="lingoberg-mark-dark.png" class="btn btn-secondary">⬇ Mark PNG</a>
+          <button class="btn btn-secondary" onclick="copySvg('logo-dark.svg')">📋 Copy SVG</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECTION 2: LOADING MODALS                  -->
+  <!-- ========================================== -->
+  <section id="loading-modals">
+    <div class="section-title">
+      <h2>⚡ Loading Modals</h2>
+      <span style="font-size: 0.85rem; color: var(--text-muted);">Exact Replica of dMAT Prep Architecture</span>
+    </div>
+    <p class="section-desc">
+      Modeled directly on <code>dmatexam/src/components/ui/LoadingModal.tsx</code>. Features the signature 5-phase rotation wave 
+      (<code>@keyframes logo-spin-wave 3.5s</code>), centered rotation axis, soft radial backdrop aura, and shimmer progress indicators.
+    </p>
+
+    <!-- Interactive Speed & Status Controls -->
+    <div class="control-toolbar">
+      <div class="control-group">
+        <span class="control-label">Animation Timing:</span>
+        <span class="modal-pill" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; background: #21262d; color: #58a6ff; border: 1px solid #30363d; padding: 0.35rem 0.75rem;">
+          🎯 3.5s Standard (Fixed dMAT Signature)
+        </span>
+      </div>
+
+      
+    </div>
+
+    <!-- Side-by-Side Modals in App Viewport -->
+    <div class="grid-2">
+      <!-- Light Mode Loading Modal -->
+      <div>
+        <div style="margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 0.85rem; font-weight: 700; color: #0284C7;">Light Mode Loading Modal</span>
+          <button class="btn btn-secondary" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" onclick="openFullscreen('light')">⛶ Test Fullscreen</button>
+        </div>
+
+        <div class="modal-viewport viewport-light">
+          <!-- Light Loading Modal Card -->
+          <div class="modal-box modal-light" id="light-modal-box">
+            <!-- Normal Loading View -->
+            <div id="light-content-loading" style="display: flex; flex-direction: column; align-items: center; gap: 1.25rem; width: 100%;">
+              <div class="glow-container">
+                <div class="ambient-glow-light"></div>
+                <svg class="spin-mark" width="52" height="60" viewBox="-2 -2 38 43" style="overflow: visible;" fill="none">
+  <g stroke="#0A192F" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+  <g stroke="#0284C7" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+</svg>
+              </div>
+
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 0.35rem; width: 100%;">
+                <span class="modal-pill">GERMAN GOETHE B1</span>
+                <h3 class="modal-title">Preparing Speaking Exam</h3>
+                <p class="modal-msg" style="animation: pulse-subtle 2s infinite ease-in-out;">Setting up interactive examiner & audio stream...</p>
+              </div>
+
+              <div class="progress-track">
+                <div class="progress-fill"></div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dark Mode Loading Modal -->
+      <div>
+        <div style="margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 0.85rem; font-weight: 700; color: #0A84FF;">Dark Mode Loading Modal</span>
+          <button class="btn btn-secondary" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" onclick="openFullscreen('dark')">⛶ Test Fullscreen</button>
+        </div>
+
+        <div class="modal-viewport viewport-dark">
+          <!-- Dark Loading Modal Card -->
+          <div class="modal-box modal-dark" id="dark-modal-box">
+            <!-- Normal Loading View -->
+            <div id="dark-content-loading" style="display: flex; flex-direction: column; align-items: center; gap: 1.25rem; width: 100%;">
+              <div class="glow-container">
+                <div class="ambient-glow-dark"></div>
+                <svg class="spin-mark" width="52" height="60" viewBox="-2 -2 38 43" style="overflow: visible;" fill="none">
+  <g stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+  <g stroke="#0A84FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+</svg>
+              </div>
+
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 0.35rem; width: 100%;">
+                <span class="modal-pill">AI STORY ENGINE</span>
+                <h3 class="modal-title">Generating Bilingual Story</h3>
+                <p class="modal-msg" style="animation: pulse-subtle 2s infinite ease-in-out;">Synthesizing vocabulary context & voice models...</p>
+              </div>
+
+              <div class="progress-track">
+                <div class="progress-fill"></div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECTION 3: MICRO LOADERS & BUTTONS         -->
+  <!-- ========================================== -->
+
+</div>
+
+<!-- Fullscreen Modal Overlay Preview -->
+<div class="fs-backdrop" id="fullscreen-overlay" onclick="closeFullscreen(event)">
+  <div class="modal-box modal-light" id="fs-modal-card" style="position: relative;" onclick="event.stopPropagation()">
+    <button class="close-modal-btn" onclick="closeFullscreen()">✕</button>
+    <div class="glow-container">
+      <div id="fs-glow" class="ambient-glow-light"></div>
+      <div id="fs-svg-container"><svg class="spin-mark" width="52" height="60" viewBox="-2 -2 38 43" style="overflow: visible;" fill="none">
+  <g stroke="#0A192F" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+  <g stroke="#0284C7" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+</svg></div>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.35rem; width: 100%;">
+      <span class="modal-pill" id="fs-pill">FULLSCREEN PREVIEW</span>
+      <h3 class="modal-title" id="fs-title">Loading Exam Environment</h3>
+      <p class="modal-msg" id="fs-msg">Connecting to low-latency German speech socket...</p>
+    </div>
+    <div class="progress-track" id="fs-track">
+      <div class="progress-fill" id="fs-fill"></div>
+    </div>
+    <button class="btn btn-secondary" style="width: 100%; margin-top: 0.5rem;" onclick="closeFullscreen()">Dismiss Modal</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">Copied to clipboard!</div>
+
+<script>
+  
+
+  function openFullscreen(mode) {
+    const overlay = document.getElementById('fullscreen-overlay');
+    const card = document.getElementById('fs-modal-card');
+    const glow = document.getElementById('fs-glow');
+    const svgCont = document.getElementById('fs-svg-container');
+    const pill = document.getElementById('fs-pill');
+
+    if (mode === 'dark') {
+      card.className = 'modal-box modal-dark';
+      glow.className = 'ambient-glow-dark';
+      svgCont.innerHTML = `<svg class="spin-mark" width="52" height="60" viewBox="-2 -2 38 43" style="overflow: visible;" fill="none">
+  <g stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+  <g stroke="#0A84FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+</svg>`;
+      pill.innerText = 'DARK MODE MODAL';
+    } else {
+      card.className = 'modal-box modal-light';
+      glow.className = 'ambient-glow-light';
+      svgCont.innerHTML = `<svg class="spin-mark" width="52" height="60" viewBox="-2 -2 38 43" style="overflow: visible;" fill="none">
+  <g stroke="#0A192F" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32.53 28.352V9.999m0 18.353-15.854 9.176"/>
+    <path d="M32.53 10 16.676.826"/>
+    <path stroke-miterlimit="10" d="m32.53 9.999-12.188.884L9.22 16.63"/>
+    <path d="M16.676.827.827 10"/>
+    <path d="M.827 9.999v18.353"/>
+    <path stroke-miterlimit="10" d="M.827 9.999 9.22 16.63"/>
+    <path d="m.827 28.352 15.849 9.176"/>
+    <path stroke-miterlimit="10" d="M.827 28.352l17.293 2.945m-1.444 6.23 1.444-6.23M9.22 16.63l8.9 14.666m0 .001 7.279-6.896"/>
+  </g>
+  <g stroke="#0284C7" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-miterlimit="10" d="m32.53 28.352-7.131-3.95"/>
+    <path stroke-miterlimit="10" d="m16.676.827 8.723 23.574M16.676.827 9.22 16.63"/>
+    <path stroke-miterlimit="10" d="M.827 28.352 9.22 16.63"/>
+  </g>
+</svg>`;
+      pill.innerText = 'LIGHT MODE MODAL';
+    }
+
+    overlay.classList.add('active');
+  }
+
+  function closeFullscreen(e) {
+    document.getElementById('fullscreen-overlay').classList.remove('active');
+  }
+
+  
+  
+  function setInlineWeight(weight, btn) {
+    document.querySelectorAll('.inline-preview-row').forEach(el => {
+      el.style.fontWeight = weight;
+      el.querySelectorAll('span').forEach(s => {
+        s.style.fontWeight = weight;
+      });
+    });
+    btn.parentElement.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    showToast(`Font weight set to ${weight}`);
+  }
+
+  function setInlineSize(size, btn) {
+    document.querySelectorAll('.inline-preview-row').forEach(el => {
+      el.style.fontSize = size;
+    });
+    btn.parentElement.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    showToast(`Inline logo preview scaled to ${size}`);
+  }
+
+  function copyText(text) {
+    navigator.clipboard.writeText(text);
+    showToast(`Copied ${text} to clipboard`);
+  }
+
+  
+    
+    function switchSplashOption(opt, btn) {
+      document.querySelectorAll('#btn-opt-v3, #btn-opt-stacked').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const imgLight = document.getElementById('splash-img-light');
+      const imgDark = document.getElementById('splash-img-dark');
+      const activeLabel = document.getElementById('splash-active-label');
+
+      if (opt === 'v3') {
+        imgLight.src = 'assets/splash-variant3-light.svg';
+        imgLight.style.width = '200px';
+        imgDark.src = 'assets/splash-variant3-dark.svg';
+        imgDark.style.width = '200px';
+        activeLabel.textContent = 'Showing: Variant 3 · Cap-Height Centerpiece Peak (SemiBold 600 · Large Hero)';
+      } else {
+        imgLight.src = 'assets/logo-splash-light.svg';
+        imgLight.style.width = '145px';
+        imgDark.src = 'assets/logo-splash-dark.svg';
+        imgDark.style.width = '145px';
+        activeLabel.textContent = 'Showing: Candidate 2 · Stacked 2-Line Emblem (Mark 1.5x + Centered Lingoberg)';
+      }
+      replaySplash();
+    }
+
+    function replaySplash() {
+      const inners = document.querySelectorAll('.splash-inner');
+      inners.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(-10px) scale(0.85)';
+        setTimeout(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(-10px) scale(1)';
+        }, 150);
+      });
+    }
+
+    function copySvg(filename) {
+    fetch('assets/' + filename)
+      .then(res => res.text())
+      .then(svg => {
+        navigator.clipboard.writeText(svg);
+        showToast(`Copied ${filename} XML to clipboard!`);
+      })
+      .catch(() => showToast('Failed to copy SVG'));
+  }
+
+
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.innerText = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2400);
+  }
+</script>
+
+</body>
+</html>
