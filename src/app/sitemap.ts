@@ -4,13 +4,14 @@ import { siteConfig } from '@/config/site';
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date('2026-11-05T00:00:00.000Z');
+  const lastModified = new Date('2026-11-10T00:00:00.000Z');
 
   const routes = [
     { path: '/', priority: 1.0, changeFrequency: 'weekly' as const },
     { path: '/contact/', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/privacy-policy/', priority: 0.5, changeFrequency: 'monthly' as const },
     { path: '/terms-of-service/', priority: 0.5, changeFrequency: 'monthly' as const },
+    { path: '/llms.txt', priority: 0.6, changeFrequency: 'monthly' as const },
   ];
 
   return routes.map((route) => ({

@@ -3,15 +3,16 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
-import { Headphones, BookmarkCheck, Award } from 'lucide-react';
+import { Compass, Mic, Camera, Award } from 'lucide-react';
 
 export function HowItWorksSection() {
   const t = useTranslations('HowItWorks');
 
   const steps = [
-    { key: 'step1', icon: Headphones },
-    { key: 'step2', icon: BookmarkCheck },
-    { key: 'step3', icon: Award },
+    { key: 'step1', icon: Compass },
+    { key: 'step2', icon: Mic },
+    { key: 'step3', icon: Camera },
+    { key: 'step4', icon: Award },
   ] as const;
 
   return (
@@ -27,13 +28,13 @@ export function HowItWorksSection() {
           <p className="text-muted-foreground text-base sm:text-lg">{t('subtitle')}</p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step) => {
             const Icon = step.icon;
             return (
               <div
                 key={step.key}
-                className="border-border bg-card relative flex flex-col rounded-3xl border p-8 shadow-xs"
+                className="border-border bg-card relative flex flex-col rounded-3xl border p-7 shadow-xs"
               >
                 <div className="mb-6 flex items-center justify-between">
                   <div className="bg-primary/10 text-primary flex h-12 w-12 items-center justify-center rounded-2xl">
@@ -43,10 +44,10 @@ export function HowItWorksSection() {
                     {t(`steps.${step.key}.number`)}
                   </span>
                 </div>
-                <h3 className="text-foreground mb-3 text-xl font-bold">
+                <h3 className="text-foreground mb-3 text-lg font-bold">
                   {t(`steps.${step.key}.title`)}
                 </h3>
-                <p className="text-muted-foreground text-[15px] leading-relaxed">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   {t(`steps.${step.key}.description`)}
                 </p>
               </div>

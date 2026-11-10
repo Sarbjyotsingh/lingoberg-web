@@ -1,22 +1,22 @@
 {
   "Metadata": {
     "Home": {
-      "title": "Lingoberg | Learn German the natural way.",
-      "description": "Dive into captivating stories and let immersive, story-based lessons make mastering German fun, effortless, and effective.",
-      "keywords": "Lingoberg, learn German, German audio stories, interactive word-sync, German vocabulary flashcards, offline German learning"
+      "title": "Lingoberg | German Audio Stories & Full telc A1–B1 Exam Simulator",
+      "description": "Ace your telc German A1 & B1 exams and master German naturally with live AI Speaking avatars, Handwritten Writing Vision OCR, Listening, Reading, Sprachbausteine, and graded audio stories.",
+      "keywords": "Lingoberg, telc Deutsch B1, telc Deutsch A1, Start Deutsch 1, German speaking exam simulator, German writing OCR, Sprachbausteine, German audio stories, learn German"
     },
     "Contact": {
       "title": "Contact & Support | Lingoberg",
-      "description": "Get help with your Lingoberg account, subscription, or German audio stories.",
+      "description": "Get help with your Lingoberg account, exam credits, subscription, or German exam simulator and audio stories.",
       "keywords": "Lingoberg support, contact Lingoberg, Abhyashala Technology Private Limited"
     },
     "PrivacyPolicy": {
       "title": "Privacy Policy | Lingoberg",
-      "description": "Read how Lingoberg (operated by Abhyashala Technology Private Limited) collects, protects, and processes your data under GDPR, CCPA, and Indian law."
+      "description": "Read how Lingoberg (operated by Abhyashala Technology Private Limited) collects, protects, and processes your voice recordings, handwritten exam photos, and personal data under GDPR and CCPA."
     },
     "TermsOfService": {
       "title": "Terms of Service | Lingoberg",
-      "description": "Terms of Service governing your use of the Lingoberg mobile application and story-based German learning services."
+      "description": "Terms of Service governing your use of the Lingoberg mobile application, 5-skill German exam simulator, subscriptions, and AI exam credits."
     }
   },
   "Navbar": {
@@ -27,100 +27,115 @@
     "getApp": "Get the App"
   },
   "Hero": {
-    "badge": "IMMERSIVE STORY-BASED GERMAN LEARNING",
-    "titleLine1": "Learn German",
-    "titleHighlight": "the natural way.",
-    "subtitle": "Dive into captivating stories and let immersive, story-based lessons make mastering German fun, effortless, and effective."
+    "badge": "GERMAN STORIES & FULL A1–B1 EXAM SIMULATOR",
+    "titleLine1": "Ace your telc Exam",
+    "titleHighlight": "& master German naturally.",
+    "subtitle": "Practice all 5 official telc A1 & B1 exam sections—live AI Speaking with examiner & partner avatars, Writing with handwritten photo OCR, Reading, Listening, and Sprachbausteine—plus immersive audio stories."
   },
   "Features": {
-    "eyebrow": "FEATURES",
-    "title": "Master German effortlessly.",
-    "subtitle": "Everything you need to immerse yourself in the language and track your growth.",
+    "eyebrow": "COMPLETE V2 SUITE",
+    "title": "Every skill you need for exam day & real life.",
+    "subtitle": "From realistic 5-skill telc A1 & B1 exam simulations to captivating German audio stories with one-tap translations.",
     "items": {
+      "examSuite": {
+        "title": "Full 5-Skill telc A1 & B1 Exam Suite",
+        "description": "Practice Hören, Sprechen, Lesen, Schreiben, and Sprachbausteine across 15+ complete mock exams. Try Teil 1 of Exam 1 free.",
+        "badge": "HÖREN · SPRECHEN · LESEN · SCHREIBEN"
+      },
+      "speaking": {
+        "title": "Live AI Speaking Simulation (Sprechen)",
+        "description": "Speak live with animated Examiner and Candidate Partner avatars across introductions, Wortkarten, Bildkarten, and joint planning tasks.",
+        "badge": "DUAL AI AVATARS"
+      },
+      "writing": {
+        "title": "Writing Exam & Handwritten Photo OCR (Schreiben)",
+        "description": "Type on a digital Antwortbogen S30 sheet, fill A1 registration forms, or snap 1–2 photos of your handwritten paper for instant Vision OCR and rubric grading.",
+        "badge": "TYPE OR SNAP PHOTO"
+      },
+      "scorecard": {
+        "title": "Official Formblatt M10 Scorecard & Mistake Diffs",
+        "description": "Get instant criterion-by-criterion grades (A–D), side-by-side \"You said\" → \"Better in German\" corrections, and full-score model answers.",
+        "badge": "INSTANT AI GRADING"
+      },
+      "booklet": {
+        "title": "Authentic Reading, Listening & Sprachbausteine",
+        "description": "Train with classified ads, headline matching, grammar/vocabulary cloze emails, and native audio tasks with transcripts and answer explanations.",
+        "badge": "REAL EXAM BOOKLET"
+      },
       "stories": {
-        "title": "Immersive Audio Stories",
-        "description": "Learn by listening to stories tailored for all skill levels, from Beginner up to Advanced.",
-        "badge": "BEGINNER · INTERMEDIATE · ADVANCED"
-      },
-      "wordSync": {
-        "title": "Interactive Word-Sync",
-        "description": "Words highlight as they are spoken. Tap any word for instant translations.",
-        "badge": "REAL-TIME SYNC"
-      },
-      "flashcards": {
-        "title": "Personal Vocabulary",
-        "description": "Save difficult words and practice them later with smart flashcards.",
-        "badge": "SMART FLASHCARDS"
-      },
-      "offline": {
-        "title": "Offline Freedom",
-        "description": "Download your favorite stories and learn anywhere, even without internet.",
-        "badge": "LEARN ANYWHERE"
+        "title": "Graded Audio Stories & Smart Flashcards",
+        "description": "Unwind with A1–C1 German audio stories featuring real-time word-sync highlighting, one-tap translation, and personal vocabulary flashcards.",
+        "badge": "WORD-SYNC & FLASHCARDS"
       }
     }
   },
   "HowItWorks": {
-    "eyebrow": "THE LINGOBERG METHOD",
-    "title": "Three steps to natural German fluency.",
-    "subtitle": "Designed around comprehensible input, interactive listening, and active recall.",
+    "eyebrow": "HOW LINGOBERG WORKS",
+    "title": "Four steps to passing your German exam with confidence.",
+    "subtitle": "Built around authentic exam booklets, real-time AI voice & handwriting evaluation, and comprehensible story input.",
     "steps": {
       "step1": {
         "number": "01",
-        "title": "Listen to Captivating Audio Stories",
-        "description": "Choose stories matched to your level (Beginner, Intermediate, or Advanced) and follow along with native German narration."
+        "title": "Choose Your Level & Try Teil 1 Free",
+        "description": "Select your target exam level (A1 or B1) and try Teil 1 of Exam 01 for free—or explore graded German audio stories from Beginner to Advanced."
       },
       "step2": {
         "number": "02",
-        "title": "Tap Any Word for Instant Translation",
-        "description": "Every word highlights as it is spoken. Tap any unfamiliar word mid-story to see its meaning and save it to your personal vocabulary."
+        "title": "Speak Live with Examiner & Partner Avatars",
+        "description": "Enter the virtual exam room for Teil 1, Teil 2, or Teil 3 (or all 3 parts together) and converse naturally in German with your AI Examiner and Partner."
       },
       "step3": {
         "number": "03",
-        "title": "Master Words with Smart Flashcards",
-        "description": "Review your saved vocabulary with interactive flashcards and quizzes to lock new German words into long-term memory."
+        "title": "Type or Photograph Your Handwritten Essay",
+        "description": "Complete Lesen, Hören, and Sprachbausteine booklets, then write your Schreiben email digitally or snap a photo of your handwritten S30 sheet for Vision OCR."
+      },
+      "step4": {
+        "number": "04",
+        "title": "Review M10 Criteria & Fix Every Mistake",
+        "description": "See your exact criterion breakdown (A–D), spoken and written mistake corrections in your own UI language, and a 100% model answer."
       }
     }
   },
   "Stats": {
-    "title": "Track your transformation.",
-    "subtitle": "Build a consistent daily German listening and reading habit.",
+    "title": "Zero surprises on real exam day.",
+    "subtitle": "Everything inside the app mirrors the official exam structure, timing, and 60% pass threshold.",
     "items": {
       "streak": {
-        "label": "Streak",
-        "value": "7 Days",
-        "detail": "Stay consistent with daily story goals"
+        "label": "Exam Modules",
+        "value": "All 5 Skills",
+        "detail": "Hören, Sprechen, Lesen, Schreiben & Sprachbausteine"
       },
       "listening": {
-        "label": "Listening",
-        "value": "120 Min",
-        "detail": "Native German audio immersion"
+        "label": "Speaking & Writing",
+        "value": "M10 & S60",
+        "detail": "Criterion-by-criterion AI rubric scorecards"
       },
       "words": {
-        "label": "Words",
-        "value": "450 Learned",
-        "detail": "Saved & practiced with flashcards"
+        "label": "Audio Stories",
+        "value": "A1 – C1",
+        "detail": "Word-sync narration & smart vocabulary flashcards"
       }
     }
   },
   "Testimonials": {
-    "eyebrow": "TESTIMONIALS",
-    "title": "\"Best German learning app ever.\"",
-    "subtitle": "Join thousands of happy learners mastering German the natural way.",
+    "eyebrow": "LEARNER REVIEWS",
+    "title": "\"Passed my telc B1 on the first try!\"",
+    "subtitle": "Join thousands of learners preparing for their German exams and building real-world fluency.",
     "items": {
       "sarah": {
         "name": "Sarah M.",
-        "role": "A2 Learner",
-        "text": "The audio stories are so engaging! I actually look forward to my German lessons now."
+        "role": "telc B1 Candidate",
+        "text": "Practicing Sprechen with Both the AI Examiner and Partner removed all my speaking anxiety before exam day."
       },
       "lukas": {
         "name": "Lukas K.",
         "role": "B1 Learner",
-        "text": "The word-sync feature is a game-changer. I can finally understand natural German speech."
+        "text": "Being able to write my Schreiben email on paper, snap a photo, and get instant rubric grading and corrections is incredible."
       },
       "elena": {
         "name": "Elena R.",
-        "role": "Beginner",
-        "text": "I love saving new words to my personal vocabulary. The flashcards are super helpful!"
+        "role": "telc A1 Candidate",
+        "text": "The Wortkarten, Bildkarten, and audio stories made studying so enjoyable. The M10 feedback in my own language helped me fix my grammar fast!"
       }
     }
   },
@@ -130,36 +145,36 @@
     "subtitle": "Have another question? Reach our team anytime at contact@lingoberg.com.",
     "items": {
       "q1": {
-        "question": "How does learning with Lingoberg work?",
-        "answer": "Lingoberg helps you learn German naturally through graded audio stories. As you listen to native narration, each word highlights in real time. You can tap any word for an instant translation, save it to your personal vocabulary, and practice it with smart flashcards."
+        "question": "Which German exams and levels are supported?",
+        "answer": "Lingoberg provides full exam preparation for CEFR A1 (Start Deutsch 1 / telc Deutsch A1) and CEFR B1 (Zertifikat Deutsch / telc Deutsch B1) across all 5 official sections: Hören (Listening), Sprechen (Speaking), Lesen (Reading), Schreiben (Writing), and B1 Sprachbausteine (Grammar & Vocabulary in Context), plus A1–C1 German audio stories."
       },
       "q2": {
-        "question": "What German levels are supported?",
-        "answer": "Our story library covers Beginner (A1–A2), Intermediate (B1), and Advanced (B2) levels so you can start at your comfort zone and progress naturally."
+        "question": "What is free to try, and how do Exam Credits work?",
+        "answer": "Teil 1 of Exam 01 is free to try (no free credits are granted on startup). Paid Weekly (12 credits/week), Monthly (45 credits/month), and Quarterly (135 credits/quarter) subscriptions unlock all 15+ exam papers. Reading, Listening, Sprachbausteine, and Stories use 0 credits. A single Speaking Teil costs 1 credit, a Writing task costs 1 credit, and a Full 3-part Speaking Mock Exam costs 3 credits."
       },
       "q3": {
-        "question": "Can I listen to stories offline?",
-        "answer": "Yes! You can download your favorite German audio stories inside the app and listen anywhere—even on the train or airplane without an internet connection."
+        "question": "Do unused credits roll over to the next month, and when are credits deducted?",
+        "answer": "Subscription credits are valid for your current billing cycle only and do NOT roll over to the next week, month, or quarter. However, any credits purchased via one-time Consumable Top-Up Packs (+5, +15, or +35 credits) never expire and are kept permanently in your account until used. Please note that credits are deducted immediately as soon as you start an exam session and cannot be refunded or restored if the app or phone closes by mistake or disconnects."
       },
       "q4": {
-        "question": "How do Personal Vocabulary and Smart Flashcards work?",
-        "answer": "Whenever you tap an unfamiliar German word while listening to a story, you can save it with one tap. Those saved words are automatically added to your personal flashcard deck so you can review and master them at your own pace."
+        "question": "How does Handwritten Photo Vision OCR work in Schreiben?",
+        "answer": "In the real exam, you write on a paper answer sheet (Antwortbogen S30). In Lingoberg, you can either type your email directly in the app or write it by hand on paper and upload 1–2 photos. Our Vision OCR transcribes your exact handwriting and grades it against official CEFR criteria (Task Fulfillment, Communicative Design, and Formal Accuracy)."
       },
       "q5": {
-        "question": "Is Lingoberg ad-free?",
-        "answer": "Yes, Lingoberg is 100% ad-free. Your learning experience will never be interrupted by third-party advertisements."
+        "question": "Is Lingoberg affiliated with telc gGmbH or the Goethe-Institut?",
+        "answer": "No. Lingoberg is an independent educational app and is not affiliated with, endorsed by, or sponsored by telc gGmbH, the Goethe-Institut, or ÖSD. All AI scores and feedback are simulated practice estimates designed to help you prepare."
       }
     }
   },
   "Cta": {
     "badge": "AVAILABLE ON IOS & ANDROID",
-    "title": "Learn German the natural way.",
-    "subtitle": "Download Lingoberg on the App Store or Google Play and start mastering German through captivating stories today!"
+    "title": "Ace your German exam & master German naturally.",
+    "subtitle": "Download Lingoberg on the App Store or Google Play—try Teil 1 of Exam 01 and immersive German audio stories today!"
   },
   "Contact": {
     "tagline": "Lingoberg Support & Inquiries",
     "pageTitle": "How can we help you?",
-    "pageSubtitle": "Whether you have a question about your Lingoberg account, German audio stories, flashcards, or subscription billing, our team is ready to assist.",
+    "pageSubtitle": "Whether you have a question about your Lingoberg account, exam credits, AI Speaking & Writing evaluations, or subscription billing, our team is ready to assist.",
     "emailCardTitle": "Direct Support Email",
     "emailAddress": "contact@lingoberg.com",
     "copyEmail": "Copy Email Address",
@@ -169,21 +184,21 @@
     "categoriesSubtitle": "Include your account email in your message so we can assist you faster.",
     "categories": {
       "account": {
-        "title": "Account & Subscriptions",
-        "desc": "Help with Google/Apple Sign-In, App Store or Google Play subscriptions, or account and data deletion requests."
+        "title": "Account, Subscriptions & Credits",
+        "desc": "Help with Google/Apple Sign-In, App Store or Google Play subscriptions, top-up credit packs, or account and data deletion requests."
       },
       "exam": {
-        "title": "Audio Stories & Vocabulary",
-        "desc": "Questions or feedback about German audio stories, word-sync translations, quizzes, or flashcards."
+        "title": "5-Skill Exam Simulator & Stories",
+        "desc": "Questions or feedback about Speaking avatars, Writing handwritten photo OCR, Reading/Listening/Sprachbausteine booklets, or audio stories."
       },
       "technical": {
         "title": "Technical Support",
-        "desc": "Report audio playback, offline download, or app performance issues on iOS or Android."
+        "desc": "Report microphone recording, camera upload, audio playback, or app performance issues on iOS or Android."
       }
     }
   },
   "Footer": {
-    "description": "Learn German the natural way through immersive, story-based lessons.",
+    "description": "Master German naturally with graded audio stories and a complete 5-skill telc A1 & B1 Exam Simulator.",
     "product": "Product",
     "company": "Support",
     "legal": "Legal",

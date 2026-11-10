@@ -4,37 +4,64 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { Headphones, Languages, Layers, CloudDownload } from 'lucide-react';
+import {
+  Award,
+  Mic,
+  FilePenLine,
+  Sparkles,
+  BookOpenCheck,
+  Headphones,
+} from 'lucide-react';
 
 export function BentoFeaturesSection() {
   const t = useTranslations('Features');
 
   const cards = [
     {
-      key: 'stories',
-      icon: Headphones,
+      key: 'examSuite',
+      icon: Award,
       spanClass: 'lg:col-span-7',
       accentClass: 'bg-sky-500/10 text-sky-600 dark:text-sky-400',
       highlight: true,
-      levels: ['Beginner', 'Intermediate', 'Advanced'],
+      levels: [
+        'Hören',
+        'Sprechen',
+        'Lesen',
+        'Schreiben',
+        'Sprachbausteine',
+        'Teil 1 Free',
+      ],
     },
     {
-      key: 'wordSync',
-      icon: Languages,
+      key: 'speaking',
+      icon: Mic,
       spanClass: 'lg:col-span-5',
       accentClass: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
     },
     {
-      key: 'flashcards',
-      icon: Layers,
+      key: 'writing',
+      icon: FilePenLine,
       spanClass: 'lg:col-span-5',
       accentClass: 'bg-purple-500/10 text-purple-600 dark:text-purple-400',
     },
     {
-      key: 'offline',
-      icon: CloudDownload,
+      key: 'scorecard',
+      icon: Sparkles,
       spanClass: 'lg:col-span-7',
+      accentClass: 'bg-amber-500/10 text-amber-600 dark:text-amber-400',
+      levels: ['Formblatt M10', 'S60 Rubric', 'You Said → Better in German'],
+    },
+    {
+      key: 'booklet',
+      icon: BookOpenCheck,
+      spanClass: 'lg:col-span-6',
       accentClass: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400',
+    },
+    {
+      key: 'stories',
+      icon: Headphones,
+      spanClass: 'lg:col-span-6',
+      accentClass: 'bg-rose-500/10 text-rose-600 dark:text-rose-400',
     },
   ] as const;
 

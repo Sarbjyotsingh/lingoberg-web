@@ -29,7 +29,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       suppressHydrationWarning
       className={`${plusJakartaSans.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="bg-background text-foreground selection:bg-primary/20 selection:text-primary min-h-screen font-sans antialiased">
+      <body
+        suppressHydrationWarning
+        className="bg-background text-foreground selection:bg-primary/20 selection:text-primary min-h-screen font-sans antialiased"
+      >
         <NextIntlClientProvider locale="en" messages={enMessages}>
           <Providers>
             {children}
